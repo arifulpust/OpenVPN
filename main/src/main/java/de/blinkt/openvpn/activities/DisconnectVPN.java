@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.os.RemoteException;
+import android.support.v4.content.LocalBroadcastManager;
 
 import de.blinkt.openvpn.LaunchVPN;
 import de.blinkt.openvpn.R;
@@ -21,6 +22,7 @@ import de.blinkt.openvpn.core.IOpenVPNServiceInternal;
 import de.blinkt.openvpn.core.OpenVPNService;
 import de.blinkt.openvpn.core.ProfileManager;
 import de.blinkt.openvpn.core.VpnStatus;
+
 
 /**
  * Created by arne on 13.10.13.
@@ -66,7 +68,7 @@ public class DisconnectVPN extends Activity implements DialogInterface.OnClickLi
         builder.setMessage(R.string.cancel_connection_query);
         builder.setNegativeButton(android.R.string.cancel, this);
         builder.setPositiveButton(R.string.cancel_connection, this);
-        builder.setNeutralButton(R.string.reconnect, this);
+       // builder.setNeutralButton(R.string.reconnect, this);
         builder.setOnCancelListener(this);
 
         builder.show();
@@ -79,6 +81,10 @@ public class DisconnectVPN extends Activity implements DialogInterface.OnClickLi
             if (mService != null) {
                 try {
                     mService.stopVPN(false);
+                    Intent intent = new Intent("progress");
+                    intent.putExtra("type", "disconnect");
+                    LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
+                  //  btn_connect_disconnect.setText("Connect With VPN");
                 } catch (RemoteException e) {
                     VpnStatus.logException(e);
                 }

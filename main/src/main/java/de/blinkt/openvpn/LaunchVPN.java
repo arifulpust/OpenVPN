@@ -44,6 +44,7 @@ import de.blinkt.openvpn.core.ProfileManager;
 import de.blinkt.openvpn.core.VPNLaunchHelper;
 import de.blinkt.openvpn.core.VpnStatus;
 
+
 /**
  * This Activity actually handles two stages of a launcher shortcut's life cycle.
  * <p/>
@@ -104,6 +105,7 @@ public class LaunchVPN extends Activity {
                     service.setCachedPassword(mSelectedProfile.getUUIDString(), PasswordCache.AUTHPASSWORD, mTransientAuthPW);
                 if (mTransientCertOrPCKS12PW != null)
                     service.setCachedPassword(mSelectedProfile.getUUIDString(), PasswordCache.PCKS12ORCERTPASSWORD, mTransientCertOrPCKS12PW);
+
 
                 onActivityResult(START_VPN_PROFILE, Activity.RESULT_OK, null);
 
@@ -268,9 +270,9 @@ public class LaunchVPN extends Activity {
 
     void showLogWindow() {
 
-        Intent startLW = new Intent(getBaseContext(), LogWindow.class);
-        startLW.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-        startActivity(startLW);
+//        Intent startLW = new Intent(getBaseContext(), LogWindow.class);
+//        startLW.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+//        startActivity(startLW);
 
     }
 

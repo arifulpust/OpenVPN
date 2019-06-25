@@ -308,7 +308,8 @@ public class VpnProfile implements Serializable, Cloneable {
         }
 
         mProfileVersion = CURRENT_PROFILE_VERSION;
-
+        mAllowedAppsVpn = new HashSet<>();
+        mAllowedAppsVpn.add("");
     }
 
     private void moveOptionsToConnection() {

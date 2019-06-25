@@ -2,10 +2,39 @@
   ~ Copyright (c) 2012-2016 Arne Schwabe
   ~ Distributed under the GNU GPL v2 with additional terms. For full terms see the file doc/LICENSE.txt
   -->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_centerInParent="true"
+        android:id="@+id/progressLayout"
+        android:visibility="gone"
+    android:layout_height="wrap_content">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_centerInParent="true"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="0"
+        android:progressDrawable="@drawable/custom_progressbar_drawable"
+        android:secondaryProgress="0" />
+
+
+    <TextView
+        android:id="@+id/txtProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/progressBar"
+        android:layout_centerInParent="true"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+</RelativeLayout>
 
     <LinearLayout
 
@@ -92,4 +121,4 @@
 
     <!-- <include layout="@layout/profile_list_fabs" /> -->
 
-</FrameLayout>
+</RelativeLayout>

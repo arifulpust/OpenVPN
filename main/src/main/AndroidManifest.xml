@@ -26,10 +26,10 @@
 
     <application
         android:name=".core.ICSOpenVPNApplication"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:appCategory="productivity"
-        android:banner="@mipmap/banner_tv"
-        android:icon="@mipmap/ic_launcher"
+        android:banner="@drawable/ic_quick"
+        android:icon="@drawable/ic_quick"
         android:label="@string/app"
         android:supportsRtl="true"
         android:theme="@style/blinkt"
@@ -73,6 +73,7 @@
 
         <service
             android:name=".core.OpenVPNService"
+
             android:permission="android.permission.BIND_VPN_SERVICE"
             android:process=":openvpn">
             <intent-filter>

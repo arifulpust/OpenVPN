@@ -1,3 +1,5 @@
+import com.android.bundle.Config
+
 /*
  * Copyright (c) 2012-2016 Arne Schwabe
  * Distributed under the GNU GPL v2 with additional terms. For full terms see the file doc/LICENSE.txt
@@ -74,7 +76,9 @@ android {
         targetSdkVersion(28)
         versionCode = 162
         versionName = "0.7.9"
-
+        applicationId = "de.blinkt.openvpn"
+        testInstrumentationRunner ="android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
         externalNativeBuild {
             cmake {
                 //arguments = listOf("-DANDROID_TOOLCHAIN=clang",
@@ -122,6 +126,10 @@ android {
         getByName("release") {
             signingConfig = signingConfigs.getByName("release")
         }
+        val booleanType = "Boolean"
+
+
+
     }
 
     flavorDimensions("implementation")
@@ -133,6 +141,25 @@ android {
         }*/
         create("normal") {
             setDimension("implementation")
+            buildConfigField ("boolean", "openvpn3", "true")
+        }
+        create("dev")  {
+            setApplicationId ("de.blinkt.openvpn")
+            setDimension("implementation")
+            resValue ("string", "app", "RSAVPN Android")
+            buildConfigField ("boolean", "openvpn3", "true")
+            minSdkVersion(14)
+
+
+
+            targetSdkVersion(28)
+        }
+        create("rsa")  {
+            setApplicationId ("com.rsa.openvpn")
+            minSdkVersion(14)
+            targetSdkVersion(28)
+            setDimension("implementation")
+            resValue ("string", "app", "RSAVPN")
             buildConfigField ("boolean", "openvpn3", "true")
         }
 
